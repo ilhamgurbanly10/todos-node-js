@@ -72,8 +72,28 @@ module.exports = {
             const sql = `UPDATE todos SET title = '${title}' WHERE id = '${id}'`;
 
             mySqlPool.query(sql, (err, result, fields) => {
-                console.log('___________________________________________--')
-                console.log(err)
+                if (err) reject(err);
+                else resolve({ err: err, result: result, fields: fields });
+            });
+
+        }).then(
+            (val) => { obj = val },
+            (err) => { obj = { err: err } }
+        )
+
+        return obj;
+
+    }, 
+
+    addOne: async (title) => {
+
+        let obj = {};
+
+        await new Promise((resolve, reject) => {
+
+            const sql = `INSERT INTO todos (title) VALUES ('${title}')`;
+
+            mySqlPool.query(sql, (err, result, fields) => {
                 if (err) reject(err);
                 else resolve({ err: err, result: result, fields: fields });
             });

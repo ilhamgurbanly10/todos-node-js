@@ -41,5 +41,15 @@ module.exports = {
             res.json({msg: error, data: []});
         }
     },
+
+    addOne: async (req, res) => {
+        const { err, result, fields } = await model.addOne(req.query.title);
+        try {
+        if (err) { res.send('error var'); }
+        else res.json(result); 
+        } catch (error) {
+            res.json({msg: error, data: []});
+        }
+    },
     
 }

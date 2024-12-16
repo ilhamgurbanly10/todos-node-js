@@ -6,5 +6,6 @@ router.get('/', TodosController.get);
 router.get('/:id', TodosController.getOne);
 router.delete('/:id', TodosController.deleteOne);
 router.put('/:id', TodosController.updateOne);
+router.post('/', TodosController.addOne);
 
 module.exports = router;
