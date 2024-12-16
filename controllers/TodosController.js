@@ -21,5 +21,25 @@ module.exports = {
             res.json({msg: error, data: []});
         }
     },
+
+    deleteOne: async (req, res) => {
+        const { err, result, fields } = await model.deleteOne(req.params.id);
+        try {
+        if (err) { res.send('error var'); }
+        else res.json(result); 
+        } catch (error) {
+            res.json({msg: error, data: []});
+        }
+    },
+
+    updateOne: async (req, res) => {
+        const { err, result, fields } = await model.updateOne(req.params.id, req.query.title);
+        try {
+        if (err) { res.send('error var'); }
+        else res.json(result); 
+        } catch (error) {
+            res.json({msg: error, data: []});
+        }
+    },
     
 }

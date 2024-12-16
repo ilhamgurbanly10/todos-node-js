@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/TodosController');
+const TodosController = require('../controllers/TodosController');
 
-router.get('/', controller.get);
-router.get('/:id', controller.getOne);
+router.get('/', TodosController.get);
+router.get('/:id', TodosController.getOne);
+router.delete('/:id', TodosController.deleteOne);
+router.put('/:id', TodosController.updateOne);
 
 module.exports = router;
